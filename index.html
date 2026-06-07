@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HAPPY BIRTHDAY HADYY! 🎂</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff6ec4,#7873f5);
+min-height:100vh;
+overflow-x:hidden;
+color:white;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-size:4rem;
+margin-bottom:20px;
+animation:float 3s ease-in-out infinite;
+}
+
+.hero p{
+font-size:1.3rem;
+max-width:700px;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+}
+
+.countdown{
+margin-top:30px;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.box{
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+padding:15px 25px;
+border-radius:15px;
+min-width:90px;
+}
+
+.box span{
+display:block;
+font-size:2rem;
+font-weight:bold;
+}
+
+.section{
+padding:80px 20px;
+max-width:1200px;
+margin:auto;
+}
+
+.section h2{
+text-align:center;
+margin-bottom:40px;
+font-size:2.5rem;
+}
+
+.gallery{
+display:flex;
+justify-content:center;
+}
+
+.gallery img{
+width:350px;
+max-width:100%;
+height:450px;
+object-fit:cover;
+border-radius:20px;
+transition:.4s;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+.message-card{
+background:rgba(255,255,255,.12);
+padding:40px;
+border-radius:20px;
+text-align:center;
+backdrop-filter:blur(12px);
+}
+
+button{
+padding:15px 35px;
+border:none;
+border-radius:50px;
+cursor:pointer;
+font-size:18px;
+font-weight:bold;
+margin-top:25px;
+background:white;
+color:#ff4d8d;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+#surprise{
+display:none;
+margin-top:30px;
+font-size:1.5rem;
+animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* Balloons */
+
+.balloon{
+position:fixed;
+bottom:-150px;
+border-radius:50%;
+opacity:.8;
+animation:rise linear infinite;
+z-index:-1;
+}
+
+@keyframes rise{
+from{
+transform:translateY(0);
+}
+to{
+transform:translateY(-130vh);
+}
+}
+
+footer{
+padding:30px;
+text-align:center;
+font-size:18px;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:2.5rem;
+}
+
+.hero p{
+font-size:1rem;
+}
+
+.box span{
+font-size:1.5rem;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div id="balloons"></div>
+
+<section class="hero">
+
+<h1>🎂 HAPPY BIRTHDAY HADYY! 🎂</h1>
+
+<p>
+MY REAL BATMAN❤️
+</p>
+
+<div class="countdown">
+
+<div class="box">
+<span id="days">0</span>
+Days
+</div>
+
+<div class="box">
+<span id="hours">0</span>
+hours
+</div>
+
+<div class="box">
+<span id="minutes">0</span>
+minutes
+</div>
+
+<div class="box">
+<span id="seconds">0</span>
+seconds
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>📸 birthday baby boy </h2>
+
+<div class="gallery">
+
+<img src="images/photo1.jpg" alt="Birthday Photo">
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="message-card">
+
+<h2>🎁 open </h2>
+
+<p>
+
+</p>
+
+<button onclick="showSurprise()">
+open
+</button>
+
+<div id="surprise">
+🎉 I think this year's birthday is special!
+Happy birthday to the man who changed my life in the softest way possible,
+thank you for being the one i can always run to no matter what
+thank you for being here for me , for understanding me even in my worest moments,
+for all things you do without me even asking
+for the way you always know how to make me feel okay 
+thank you for being you , thank you for being hady❤️
+I hope this year is filled with happiness for you,and that I bring good luck into your life 
+i hope we achieve all our dreams and make countless beautiful memories together.
+and remember that , you are NUMBER ONE and will always remain so
+❤️❤️❤️
+</div>
+
+</div>
+
+</section>
+
+<footer>
+Made with all my heart ❤️
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+<script>
+
+/* Countdown */
+
+const birthday = new Date("2026-6-10 00:00:00").getTime();
+
+setInterval(()=>{
+
+const now = new Date().getTime();
+
+const distance = birthday - now;
+
+const days = Math.floor(distance/(1000*60*60*24));
+const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds = Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("days").innerHTML=days;
+document.getElementById("hours").innerHTML=hours;
+document.getElementById("minutes").innerHTML=minutes;
+document.getElementById("seconds").innerHTML=seconds;
+
+},1000);
+
+
+/* Surprise */
+
+function showSurprise(){
+
+document.getElementById("surprise").style.display="block";
+
+confetti({
+particleCount:250,
+spread:180,
+origin:{y:.6}
+});
+
+}
+
+
+/* Balloons */
+
+const container = document.getElementById("balloons");
+
+for(let i=0;i<25;i++){
+
+const balloon=document.createElement("div");
+
+balloon.classList.add("balloon");
+
+const size=Math.random()*60+40;
+
+balloon.style.width=size+"px";
+balloon.style.height=size*1.2+"px";
+
+balloon.style.left=Math.random()*100+"vw";
+
+balloon.style.background=
+`hsl(${Math.random()*360},80%,60%)`;
+
+balloon.style.animationDuration=
+(10+Math.random()*15)+"s";
+
+balloon.style.animationDelay=
+Math.random()*10+"s";
+
+container.appendChild(balloon);
+
+}
+
+</script>
+
+</body>
+</html>
